@@ -7,7 +7,6 @@ import socket as mysoc
 
 # client task - given
 
-
 def client():
     try:
         cs = mysoc.socket(mysoc.AF_INET, mysoc.SOCK_STREAM)
@@ -22,15 +21,15 @@ def client():
     server_binding = (sa_sameas_myaddr, port)
     cs.connect(server_binding)
 
-# Opening the file in which string data is present which is to be sent to the server.
-    file = open("HW1test.txt", "r")
+# Opening the file in which string data is present which is first checked on RS, TS.
+    file = open("PROJI-HNS.txt", "r")
     for line in file:
         print(line)
         cs.sendall(bytes(line, 'utf-8'))
     file.close()
 
 # Opening the file in which data recieved back from the server has to be written in form of ASCII values.
-    writeFile = open("HW1out.txt", "w")
+    writeFile = open("RESOLVED.txt", "w")
 
     while True:
         data_from_server = cs.recv(1024)
@@ -45,7 +44,5 @@ def client():
 
 t2 = threading.Thread(name='client', target=client)
 t2.start()
-
-input("Hit ENTER  to exit")
 
 exit()

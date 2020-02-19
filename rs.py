@@ -1,3 +1,10 @@
+
+import threading
+import time
+import random
+import socket as mysoc
+
+
 class ListNode(object):
     def __init__(self, hostname, ipAddress, flag):
         self.next = None
@@ -6,17 +13,10 @@ class ListNode(object):
         self.flag = flag
 
 
-
-import threading
-import time
-import random
-import socket as mysoc
-
 # server task - given
 
 
 def server():
-    stringManipulation("Hello")
     try:
         ss = mysoc.socket(mysoc.AF_INET, mysoc.SOCK_STREAM)
         print("[S]: Server socket created")
@@ -47,22 +47,7 @@ def server():
     ss.close()
     exit()
 
-# stringManipulation takes in an input String as a parameter and then returns the string converted to ASCII value, character by character.
-
-
-def stringManipulation(inputString):
-    result = ""
-    for element in inputString:
-        if len(result) == 0:
-            result = result + str(ord(element))
-        else:
-            result = result + "_" + str(ord(element))
-    return result
-
 
 t1 = threading.Thread(name='server', target=server)
 t1.start()
-
-input("Hit ENTER  to exit")
-
 exit()
