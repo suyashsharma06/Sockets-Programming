@@ -9,11 +9,11 @@ import socket as mysoc
 
 
 def client():
-    try:
-        cs = mysoc.socket(mysoc.AF_INET, mysoc.SOCK_STREAM)
-        print("[C]: Client socket created")
-    except mysoc.error as err:
-        print('{} \n'.format("socket open error ", err))
+    # try:
+    #     cs = mysoc.socket(mysoc.AF_INET, mysoc.SOCK_STREAM)
+    #     print("[C]: Client socket created")
+    # except mysoc.error as err:
+    #     print('{} \n'.format("socket open error ", err))
 
 # Define the port on which you want to connect to the server
     port = 50007
