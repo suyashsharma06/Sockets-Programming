@@ -1,4 +1,4 @@
-Suyash Sharma; NETID: ss2967
+Suyash Sharma, Mohit Pavecha; NETID: ss2967, mp1379
 
 1. Briefly discuss how you implemented your recursive client functionality.
 
