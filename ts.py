@@ -36,7 +36,7 @@ def server():
             if (y == inputStr):
                 print("Got it")
                 
-    print("[S]: Server IP address is  ",localhost_ip)
+    print("[S]: Server IP address is: ",localhost_ip)
     csockid,addr=ss.accept()
     print ("[S]: Got a connection request from a client at", addr)
 # send a intro  message to the client.
@@ -53,6 +53,6 @@ t1 = threading.Thread(name='server', target=server)
 t1.start()
 
 
-input("Hit ENTER  to exit")
+input("Hit ENTER to exit")
 
 exit()

@@ -5,12 +5,11 @@ import random
 import socket as mysoc
 
 
-class ListNode(object):
-    def __init__(self, hostname, ipAddress, flag):
-        self.next = None
-        self.hostname = hostname
-        self.ipAddress = ipAddress
-        self.flag = flag
+def makeString(intputArr):
+    outputStr = ""
+    for x in inputArr:
+        outputStr = x + " "
+    return outputStr
 
 
 # server task - given
@@ -28,6 +27,20 @@ def server():
     host = mysoc.gethostname()
     print("[S]: Server host name is: ", host)
     localhost_ip = (mysoc.gethostbyname(host))
+    f = open("PROJI-DNSTS.txt", "r")
+    mainArr = []
+    for x in f:
+        word = x.split()
+        mainArr.append(word)
+    f.close()
+    print(mainArr)
+    localhost_ip=(mysoc.gethostbyname(host))
+    inputStr = "www.rutgers.com"
+    for x in mainArr:
+        for y in x:
+            if (y == inputStr):
+                print("Got it")
+
     print("[S]: Server IP address is  ", localhost_ip)
     csockid, addr = ss.accept()
     print("[S]: Got a connection request from a client at", addr)
