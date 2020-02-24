@@ -4,6 +4,12 @@ import time
 import random
 import socket as mysoc
 
+def makeString(intputArr):
+    outputStr = ""
+    for x in inputArr:
+        outputStr = x + " "
+    return outputStr
+
 # server task
 def server():
     try:
@@ -21,15 +27,22 @@ def server():
     for x in f:
         word = x.split()
         mainArr.append(word)
-    print(mainArr)
     f.close()
+    print(mainArr)
     localhost_ip=(mysoc.gethostbyname(host))
+    inputStr = "www.rutgers.com"
+    for x in mainArr:
+        for y in x:
+            if (y == inputStr):
+                print("Got it")
+                
     print("[S]: Server IP address is  ",localhost_ip)
     csockid,addr=ss.accept()
     print ("[S]: Got a connection request from a client at", addr)
 # send a intro  message to the client.
     msg= "Welcome to CS 352"
     csockid.send(msg.encode('utf-8'))
+    
 
    # Close the server socket
     ss.close()
