@@ -4,11 +4,11 @@ import time
 import random
 import socket as mysoc
 
-def makeString(intputArr):
-    outputStr = ""
-    for x in inputArr:
-        outputStr = x + " "
-    return outputStr
+# def makeString(intputArr):
+#     outputStr = ""
+#     for x in inputArr:
+#         outputStr = x + " "
+#     return outputStr
 
 # server task
 def server():

@@ -5,11 +5,11 @@ import random
 import socket as mysoc
 
 
-def makeString(intputArr):
-    outputStr = ""
-    for x in inputArr:
-        outputStr = x + " "
-    return outputStr
+# def makeString(intputArr):
+#     outputStr = ""
+#     for x in inputArr:
+#         outputStr = x + " "
+#     return outputStr
 
 
 # server task - given
@@ -35,11 +35,19 @@ def server():
     f.close()
     print(mainArr)
     localhost_ip=(mysoc.gethostbyname(host))
-    inputStr = "www.rutgers.com"
+    inputStr = "www.rutgers.edu"
+    resultStr = ""
+    notExist = True
     for x in mainArr:
         for y in x:
             if (y == inputStr):
-                print("Got it")
+                notExist = False
+                resultStr = " ".join(str(p) for p in x)
+                print(resultStr)   
+    
+    if (notExist):
+        print("ilab2.cs.rutgers.edu NS")
+     
 
     print("[S]: Server IP address is  ", localhost_ip)
     csockid, addr = ss.accept()
