@@ -38,6 +38,7 @@ def server():
     inputStr = "www.rutgers.edu"
     resultStr = ""
     notExist = True
+    # Looking for the name in the current directory
     for x in mainArr:
         for y in x:
             if (y == inputStr):
@@ -45,6 +46,7 @@ def server():
                 resultStr = " ".join(str(p) for p in x)
                 print(resultStr)   
     
+    # If the lookup is not found, then it has to be redirected to another server.
     if (notExist):
         print("ilab2.cs.rutgers.edu NS")
      

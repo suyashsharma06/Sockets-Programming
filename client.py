@@ -8,11 +8,11 @@ import socket as mysoc
 # client task - given
 
 def client():
-    # try:
-    #     cs = mysoc.socket(mysoc.AF_INET, mysoc.SOCK_STREAM)
-    #     print("[C]: Client socket created")
-    # except mysoc.error as err:
-    #     print('{} \n'.format("socket open error ", err))
+    try:
+        cs=mysoc.socket(mysoc.AF_INET, mysoc.SOCK_STREAM)
+        print("[C]: Client socket created")
+    except mysoc.error as err:
+        print('{} \n'.format("socket open error ",err))
 
 # Define the port on which you want to connect to the server
     port = 50007
@@ -20,6 +20,10 @@ def client():
 # connect to the server on local machine
     server_binding = (sa_sameas_myaddr, port)
     cs.connect(server_binding)
+    data_from_server=cs.recv(1024)
+#receive data from the server
+
+    print("[C]: Data received from server::  ",data_from_server.decode('utf-8'))
 
 # Opening the file in which string data is present which is first checked on RS, TS.
     file = open("PROJI-HNS.txt", "r")
@@ -27,19 +31,24 @@ def client():
         print(line)
         cs.sendall(bytes(line, 'utf-8'))
     file.close()
+    
+    toWrite = open("RESOLVED.txt", "w")
+    serverData = data_from_server.decode('utf-8')
+    toWrite.write(serverData + "\n")
+    toWrite.close()
 
 # Opening the file in which data recieved back from the server has to be written in form of ASCII values.
-    writeFile = open("RESOLVED.txt", "w")
+    # 
 
-    while True:
-        data_from_server = cs.recv(1024)
-        strReceived = data_from_server.decode('utf-8')
-        print("[C]: Data received from server::  ",
-              strReceived)
+    # while True:
+    #     data_from_server = cs.recv(1024)
+    #     strReceived = data_from_server.decode('utf-8')
+    #     print("[C]: Data received from server::  ",
+    #           strReceived)
 
-        writeFile.write(strReceived + "\n")
+    #     writeFile.write(strReceived + "\n")
 
-    writeFile.close()
+    # writeFile.close()
 
 
 t2 = threading.Thread(name='client', target=client)
