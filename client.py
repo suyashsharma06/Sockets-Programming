@@ -6,24 +6,35 @@ import socket
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print("Client Socket has been created.")
 clientAddress = socket.gethostbyname(socket.gethostname())
+
+# Root Server is at port 50,000.
 serverBinding = (clientAddress, 50000)
 clientSocket.connect(serverBinding)
 
+# Top Server is at port 60,000.
+serverBinding2 = (clientAddress, 60000)
+clientSocket.connect(serverBinding2)
+
 # Check if return string below matches 
-errorMessage = "Error:HOST NOT FOUND"
+errorMessage = " - Error:HOST NOT FOUND"
 
 # Read line by line, send data to the Root Server and wait for response.
 file = open("PROJI-HNS.txt", "r")
 for line in file:
-    encoded = line.encode('utf-8')
-    print(encoded)
-    clientSocket.send(encoded)
-    data_from_rs = clientSocket.recv(1024).decode('utf-8')
-    if (data_from_rs == errorMessage):
-        Strw = "K" 
+    encodedLine = line.encode('utf-8')
+    clientSocket.send(encodedLine)
+    # Receive Data from RS now.
+    receivedData = clientSocket.recv(1024).decode('tuf-8')
+    if receivedData == "DOES NOT EXIST":
+        # Check Top Server now.
+        aowidn = ""
+    else:
+        writeFile = open("RESOLVED.txt", "a")
+        writeFile.write(line + errorMessage)
+
 file.close()
 
-receivedData = clientSocket.recv(1024)
+
 print("Data received from server is " + receivedData.decode('utf-8'))
 clientSocket.close()
 exit()
