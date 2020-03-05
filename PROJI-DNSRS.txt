@@ -4,3 +4,4 @@ kill.cs.rutgers.edu 182.48.3.2 A
 www.ibm.com 64.42.3.4 A
 www.google.com 8.6.4.2 A
 localhost - NS
+this.should.work 99.8.21 A

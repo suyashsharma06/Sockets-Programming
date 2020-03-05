@@ -4,3 +4,6 @@ www.ibm.edu
 google.com
 www.google.com
 MX.RUTGERS.EDU
+just.checking.com
+this.doesnot.exist
+this.should.work

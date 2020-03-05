@@ -4,3 +4,6 @@ www.ibm.edu - Error:HOST NOT FOUND
 google.com - Error:HOST NOT FOUND
 www.google.com 8.6.4.2 A
 mx.rutgers.edu 192.64.4.2 A
+just.checking.com 5.3.22.3 A
+this.doesnot.exist - Error:HOST NOT FOUND
+this.should.work 99.8.21 A
